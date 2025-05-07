@@ -1,10 +1,11 @@
-import React, { useId } from 'react';
+import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import { nanoid } from 'nanoid'
 import Css from './ContactForm.module.css';
 
 const ContactForm = () => {
-    const nameId = useId();
-    const numberId = useId();
+    const nameId = nanoid();
+    const numberId = nanoid();
     return (
         <Formik initialValues={{}} onSubmit={() => { }}>
             <Form className={Css.Form}>

@@ -16,6 +16,11 @@ function App() {
         </div>
         <div className='col'>
           <SearchBox />
+
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col'>
           <ContactList />
         </div>
       </div>

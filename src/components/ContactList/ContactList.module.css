@@ -1,0 +1,8 @@
+.ContactList {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+    width: 100%;
+    gap: 40px;
+    margin: 0 auto;
+}

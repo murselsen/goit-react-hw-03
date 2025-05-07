@@ -1,11 +1,17 @@
-import React, { useId } from 'react';
+import React from 'react';
+import { nanoid } from 'nanoid';
+import * as Yup from "yup";
+
 import { Formik, Form, Field } from 'formik';
 import Css from './SearchBox.module.css';
 const SearchBox = () => {
-    const searchId = useId();
+    const searchId = nanoid();
+    const SearchFeedBackSchema = Yup.object().shape({
+        search: Yup.string(),
+    });
     const handleChange = () => { };
     return (
-        <Formik initialValues={{}} onSubmit={() => { }}>
+        <Formik initialValues={{ 'search': '' }} onSubmit={() => { }} validationSchema={SearchFeedBackSchema}>
             <Form className={Css.Form} >
                 <div className={Css.FieldGroup}>
                     <label htmlFor={searchId}>Search</label>
