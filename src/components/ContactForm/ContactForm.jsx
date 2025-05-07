@@ -8,7 +8,6 @@ const ContactForm = ({ addContact }) => {
     const numberId = nanoid();
     const handleSubmit = (e) => {
         e.id = nanoid();
-        console.log('Submit:', e)
         addContact(e);
     }
     return (

@@ -24,14 +24,11 @@ function App() {
   };
 
   const deleteContactByID = (contactItem) => {
-    console.log('Delete Contact', contactItem);
     setContacts(prev => {
       return prev.filter(contact => contact.id !== contactItem.id);
     });
   }
   useEffect(() => {
-    console.log('App - useEffect', Contacts);
-
     localStorage.setItem('contacts', JSON.stringify(Contacts));
 
   }, [Contacts]);

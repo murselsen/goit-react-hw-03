@@ -6,7 +6,6 @@ import Contact from '../Contact/Contact';
 const ContactList = ({ Contacts, SearchName, DeleteContact }) => {
     const HandleContactDelete = (contact) => {
         // Handle contact delete logic here
-        console.log('HandleContactDelete', contact);
         DeleteContact(contact);
     };
 
