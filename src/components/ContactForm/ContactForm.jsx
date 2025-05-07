@@ -6,9 +6,11 @@ import Css from './ContactForm.module.css';
 const ContactForm = ({ addContact }) => {
     const nameId = nanoid();
     const numberId = nanoid();
-    const handleSubmit = (e) => {
-        e.id = nanoid();
-        addContact(e);
+    const handleSubmit = (values, e) => {
+        values.id = nanoid();
+        addContact(values);
+        e.resetForm();
+
     }
     return (
         <Formik initialValues={{ name: '', number: '' }} onSubmit={handleSubmit}>
