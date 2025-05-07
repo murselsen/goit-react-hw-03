@@ -1,0 +1,30 @@
+#root {
+  max-width: 1280px;
+  height: max-content;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.App .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 120px;
+  margin: 0 auto;
+
+}
+
+.row .col {
+  padding: 1rem;
+  margin: 0 auto;
+
+}
