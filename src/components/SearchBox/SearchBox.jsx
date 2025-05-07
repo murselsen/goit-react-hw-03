@@ -4,12 +4,15 @@ import * as Yup from "yup";
 
 import { Formik, Form, Field } from 'formik';
 import Css from './SearchBox.module.css';
-const SearchBox = () => {
+const SearchBox = ({ searchContact }) => {
     const searchId = nanoid();
     const SearchFeedBackSchema = Yup.object().shape({
         search: Yup.string(),
     });
-    const handleChange = () => { };
+    const handleChange = (e) => {
+        const { value } = e.target;
+        searchContact(value)
+    };
     return (
         <Formik validationSchema={SearchFeedBackSchema}>
             <Form className={Css.Form} >

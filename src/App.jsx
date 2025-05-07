@@ -18,7 +18,8 @@ function App() {
     console.log('Add contact', contact);
   }
   const searchContact = (contactName) => {
-    console.log('Search Contact', contactName);
+    console.log('App - Search Contact', contactName);
+    setFilter(Contacts.filter(contact => contact.name.toLowerCase().includes(contactName.toLowerCase())))
   }
   const deleteContact = (contactId) => {
     console.log('Delete Contact', contactId)
@@ -30,10 +31,10 @@ function App() {
       <h1>PhoneBook</h1>
       <div className='row'>
         <div className='col'>
-          <ContactForm />
+          <ContactForm addContact={addContact} />
         </div>
         <div className='col'>
-          <SearchBox />
+          <SearchBox searchContact={searchContact} />
         </div>
       </div>
       <div className='row'>
