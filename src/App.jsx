@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import ContactForm from './components/ContactForm/ContactForm'
 import ContactList from './components/ContactList/ContactList'
@@ -12,14 +12,24 @@ function App() {
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
-  const [filterContacts, setFilter] = useState(Contacts);
+  const [filterContacts, setFilterContacts] = useState(Contacts);
 
   const addContact = (contact) => {
     console.log('Add contact', contact);
+    setContacts(...Contacts, contact);
+    console.log('Contacts', Contacts);
   }
+  useEffect(() => {
+    console.log('App - useEffect', Contacts);
+    setFilterContacts(Contacts);
+    console.log('App - useEffect - setFilter', filterContacts);
+
+  }, [Contacts]);
   const searchContact = (contactName) => {
     console.log('App - Search Contact', contactName);
-    setFilter(Contacts.filter(contact => contact.name.toLowerCase().includes(contactName.toLowerCase())))
+    setFilterContacts(filterContacts => {
+      filterContacts.filter(contact => contact.name.toLowerCase().includes(contactName.toLowerCase()))
+    })
   }
   const deleteContact = (contactId) => {
     console.log('Delete Contact', contactId)

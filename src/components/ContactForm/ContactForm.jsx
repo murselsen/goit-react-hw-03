@@ -3,11 +3,16 @@ import { Formik, Form, Field } from 'formik';
 import { nanoid } from 'nanoid'
 import Css from './ContactForm.module.css';
 
-const ContactForm = () => {
+const ContactForm = ({ addContact }) => {
     const nameId = nanoid();
     const numberId = nanoid();
+    const handleSubmit = (e) => {
+        e.id = nanoid();
+        console.log('Submit:', e)
+        addContact(e);
+    }
     return (
-        <Formik onSubmit={() => { }}>
+        <Formik initialValues={{ name: '', number: '' }} onSubmit={handleSubmit}>
             <Form className={Css.Form}>
                 <div className={Css.FieldGroup}>
                     <label htmlFor={nameId}>Name</label>
