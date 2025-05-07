@@ -5,35 +5,38 @@ import ContactList from './components/ContactList/ContactList'
 import SearchBox from './components/SearchBox/SearchBox'
 
 function App() {
-
-  const [Contacts, setContacts] = useState([
+  const localStorageContacts = JSON.parse(localStorage.getItem('contacts')) || [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  ]);
-  const [filterContacts, setFilterContacts] = useState(Contacts);
+  ];
+  const [Contacts, setContacts] = useState(localStorageContacts);
+  const [searchName, setSearchName] = useState("");
 
   const addContact = (contact) => {
-    console.log('Add contact', contact);
-    setContacts(...Contacts, contact);
-    console.log('Contacts', Contacts);
+    setContacts(prev => {
+      return [...prev, contact];
+    });
+  }
+  const searchContact = (name) => {
+    setSearchName(name);
+  };
+
+  const deleteContactByID = (contactItem) => {
+    console.log('Delete Contact', contactItem);
+    setContacts(prev => {
+      return prev.filter(contact => contact.id !== contactItem.id);
+    });
   }
   useEffect(() => {
     console.log('App - useEffect', Contacts);
-    setFilterContacts(Contacts);
-    console.log('App - useEffect - setFilter', filterContacts);
+
+    localStorage.setItem('contacts', JSON.stringify(Contacts));
 
   }, [Contacts]);
-  const searchContact = (contactName) => {
-    console.log('App - Search Contact', contactName);
-    setFilterContacts(filterContacts => {
-      filterContacts.filter(contact => contact.name.toLowerCase().includes(contactName.toLowerCase()))
-    })
-  }
-  const deleteContact = (contactId) => {
-    console.log('Delete Contact', contactId)
-  }
+
+
 
   return (
 
@@ -49,7 +52,7 @@ function App() {
       </div>
       <div className='row'>
         <div className='col'>
-          <ContactList Contacts={filterContacts} />
+          <ContactList Contacts={Contacts} SearchName={searchName} DeleteContact={deleteContactByID} />
         </div>
       </div>
     </div>

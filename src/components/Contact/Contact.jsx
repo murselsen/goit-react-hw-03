@@ -2,11 +2,8 @@ import React from 'react';
 import Css from './Contact.module.css';
 import userIcon from './icon/user.png';
 import phoneIcon from './icon/phone-call.png';
-const Contact = ({ name, number, handleContactDelete }) => {
-    const handleDelete = (e) => {
-        console.log('Delete contact', e);
-        handleContactDelete();
-    }
+const Contact = ({ id, name, number, handleContactDelete }) => {
+
     return (
         <div className={Css.Contact}>
             <div className={Css.Info}>
@@ -18,7 +15,9 @@ const Contact = ({ name, number, handleContactDelete }) => {
                 </div>
             </div>
             <div className={Css.Buttons}>
-                <button type='button' onClick={handleDelete}>Delete</button>
+                <button type='button' onClick={() => {
+                    handleContactDelete({ id, name, number });
+                }}>Delete</button>
             </div>
         </div>
     )
