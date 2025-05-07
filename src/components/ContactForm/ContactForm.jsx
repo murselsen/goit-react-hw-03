@@ -7,7 +7,7 @@ const ContactForm = () => {
     const nameId = nanoid();
     const numberId = nanoid();
     return (
-        <Formik initialValues={{}} onSubmit={() => { }}>
+        <Formik onSubmit={() => { }}>
             <Form className={Css.Form}>
                 <div className={Css.FieldGroup}>
                     <label htmlFor={nameId}>Name</label>
@@ -17,7 +17,6 @@ const ContactForm = () => {
                     <label htmlFor={numberId}>Number</label>
                     <Field name="number" type="tel" placeholder="Enter your number" id={numberId} className={Css.input} />
                 </div>
-
                 <button type="submit" className={Css.button}>Add contact</button>
             </Form>
         </Formik>

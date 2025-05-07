@@ -11,7 +11,7 @@ const SearchBox = () => {
     });
     const handleChange = () => { };
     return (
-        <Formik initialValues={{ 'search': '' }} onSubmit={() => { }} validationSchema={SearchFeedBackSchema}>
+        <Formik validationSchema={SearchFeedBackSchema}>
             <Form className={Css.Form} >
                 <div className={Css.FieldGroup}>
                     <label htmlFor={searchId}>Search</label>
